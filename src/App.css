@@ -1,8 +1,7 @@
 .App {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-areas: 'main main main aside'
-                        'footer footer footer footer';
+  grid-template-areas: 'main main main aside';
   min-height: 100vh;
 }
 
@@ -10,22 +9,25 @@
   color: #61dafb;
 }
 
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(to bottom right, #EB5C7C, #C14B8C);
+  transition: all .2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+body:hover .backdrop {
+  opacity: 1;
+}
+
 .main {
   grid-area: main;
   padding: 10rem;
 }
-
-.blaha {
-  opacity: 1;
-  /*animation: fade 5s infinite;*/
-}
-
-@keyframes fade {
-  0%,100% { opacity: 1 }
-  85% { opacity: 1 }
-  90% { opacity: 0 }
-}
-
 .aside {
   display: grid;
   grid-area: aside;
@@ -53,6 +55,30 @@
 
 .aside .grid__card {
   padding: 2rem 2.5rem;
+  transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+}
+
+.aside .grid__card:first-child {
+  transform-origin: top right;
+}
+
+.aside .grid__card:nth-child(2), .aside .grid__card:nth-child(3) {
+  transform-origin: right;
+}
+
+.aside .grid__card:nth-child(4) {
+  transform-origin: bottom right;
+}
+
+.aside .grid__card:hover {
+  transform: scale(3.5, 3.5);
+  border-radius: 0.5rem;
+}
+
+.aside:hover .grid__card:not(:hover) {
+  transition: all .2s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
 }
 
 .aside .grid__card li {
@@ -93,4 +119,18 @@
 .player__container span {
   padding: 0.5rem 1rem;
   font-size: 1.8rem;
+}
+
+.clock__container {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.clock__container h1 {
+  padding: 0.5rem;
+  border-bottom: 0.3rem solid #c14b8b45;
+  display: inline;
 }

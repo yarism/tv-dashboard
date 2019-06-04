@@ -6,7 +6,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <Clock />
       <main className="main">
+        <div className="backdrop"></div>
         <div className="blaha">
           <h1 className="headline">Banor</h1>
           <h2>Padel</h2>
@@ -163,9 +165,6 @@ function App() {
           <h3>sadf</h3>
         </li>
       </ul>
-      <footer>
-        <Clock />
-      </footer>
     </div>
   );
 }
