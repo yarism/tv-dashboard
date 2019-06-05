@@ -5,7 +5,6 @@ const FullscreenContext = React.createContext();
 const data = [
     {
         title: 'Aktiviteter',
-        showFullscreen: false,
         items: [
             '29/6 - Lär dig tennis',
             '2/7 - Hur yoga förbättrar din smash',
@@ -16,15 +15,15 @@ const data = [
     },
     {
         title: 'Nyheter',
-        showFullscreen: true
+        items: [
+            '5/7 - Invigning!'
+        ]
     },
     {
-        title: 'asdf',
-        showFullscreen: false
+        title: 'Erbjudande',
     },
     {
         title: 'mjau',
-        showFullscreen: false
     }
 ];
 
