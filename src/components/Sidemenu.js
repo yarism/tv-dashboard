@@ -21,7 +21,8 @@ const data = [
             'Sommartennis (Obegränsat) - 1 495 kr',
             'PT Klippet (10 klipp) - 5 000 kr',
             'Sommarpadel (Obegränsat) - 1 495 kr'
-        ]
+        ],
+        backgroundImage: './padel-1.jpg'
     },
     {
         image: './A_Logo_Slogan_01.png'
