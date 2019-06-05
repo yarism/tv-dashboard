@@ -11,7 +11,8 @@ const data = [
             '4/7 - Gruppträning med Leffe',
             '12/7 - Minitunering i padel',
             '14/7 - Gruppstretch'
-        ]
+        ],
+        backgroundImage: './padel-1.jpg'
     },
     {
         title: 'Erbjudanden',
@@ -34,7 +35,8 @@ const data = [
             'Sommarkurs JUNIOR vecka 29 2019',
             'Sommarkurs VUXNA vecka 27 2019',
             'Sommarkurs VUXNA vecka 29 2019'
-        ]
+        ],
+        backgroundImage: './padel-2.jpg'
     }
 ];
 
@@ -107,8 +109,8 @@ class Sidemenu extends React.Component {
 	
 	render() {
 		return (
-            <FullscreenContext.Provider value={{ showFullscreen: this.state.showFullscreen }}>
-                <ul className="aside">
+            <FullscreenContext.Provider value={{ showFullscreen: this.state.showFullscreen, card: data[this.state.activeIndex] }}>
+                <ul className="aside" style={{ backgroundImage: './A_Logo_Slogan_01.png' }}>
                     {this.renderCard()}
                 </ul>
                 {Backdrop()}
@@ -121,8 +123,9 @@ const Backdrop = () => {
     return (
         <FullscreenContext.Consumer>
             {context => {
+                console.log(context);
                 return (
-                    <div className={"backdrop " + (context.showFullscreen ? 'backdrop--show' : '') }></div>
+                    <div className={"backdrop " + (context.showFullscreen ? 'backdrop--show' : '')} style={{ backgroundImage: (context.card && context.card.backgroundImage ? `url(${context.card.backgroundImage })` : '') }}></div>
                 )
             }}
         </FullscreenContext.Consumer>
