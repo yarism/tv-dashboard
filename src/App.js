@@ -5,7 +5,7 @@ import { Sidemenu } from './components/Sidemenu';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Clock />
       <main className="main">
         <div className="blaha">

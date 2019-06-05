@@ -1,12 +1,8 @@
-.App {
+.app {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas: 'main main main aside';
   min-height: 100vh;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 .backdrop {
@@ -28,6 +24,13 @@
   grid-area: main;
   padding: 10rem;
 }
+
+@media (max-width: 1600px) {
+  .main {
+    padding: 5rem;
+  }
+}
+
 .aside {
   display: grid;
   grid-area: aside;
@@ -45,6 +48,13 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 4rem;
   grid-row-gap: 5rem;
+}
+
+@media (max-width: 1600px) {
+  .grid {
+    grid-column-gap: 2rem;
+    grid-row-gap: 3rem;
+  }
 }
 
 .grid__card {
@@ -83,6 +93,12 @@
 .aside .grid__card li {
   font-size: 2rem;
   padding: 0.6rem 0;
+}
+
+@media (max-width: 1600px) {
+  .aside .grid__card li {
+    font-size: 1.4rem;
+  }
 }
 
 .card__headline {
