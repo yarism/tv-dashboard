@@ -20,7 +20,7 @@
   opacity: 0;
 }
 
-body:hover .backdrop {
+.backdrop--show {
   opacity: 1;
 }
 
@@ -71,13 +71,12 @@ body:hover .backdrop {
   transform-origin: bottom right;
 }
 
-.aside .grid__card:hover {
+.grid__card--full {
   transform: scale(3.5, 3.5);
   border-radius: 0.5rem;
 }
 
-.aside:hover .grid__card:not(:hover) {
-  transition: all .2s cubic-bezier(0.4, 0, 0.2, 1);
+.aside .grid__card--hide {
   opacity: 0;
 }
 

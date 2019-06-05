@@ -1,14 +1,13 @@
 import React from 'react';
-
-import Clock from './components/Clock';
 import './App.css';
+import Clock from './components/Clock';
+import { Sidemenu } from './components/Sidemenu';
 
 function App() {
   return (
     <div className="App">
       <Clock />
       <main className="main">
-        <div className="backdrop"></div>
         <div className="blaha">
           <h1 className="headline">Banor</h1>
           <h2>Padel</h2>
@@ -144,27 +143,7 @@ function App() {
           </ul>
         </div>
       </main>
-      <ul className="aside">
-        <li className="grid__card">
-          <h3>Aktiviteter</h3>
-          <ul>
-            <li>29/6 - Lär dig tennis</li>
-            <li>2/7 - Hur yoga förbättrar din smash</li>
-            <li>4/7 - Gruppträning med Leffe</li>
-            <li>12/7 - Minitunering i padel</li>
-            <li>14/7 - Gruppstretch</li>
-          </ul>
-        </li>
-        <li className="grid__card">
-          <h3>Nyheter</h3>
-        </li>
-        <li className="grid__card">
-          <h3>sadf</h3>
-        </li>
-        <li className="grid__card">
-          <h3>sadf</h3>
-        </li>
-      </ul>
+      <Sidemenu />
     </div>
   );
 }
