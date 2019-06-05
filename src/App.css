@@ -95,6 +95,11 @@
   padding: 0.6rem 0;
 }
 
+.aside .grid__card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 1600px) {
   .aside .grid__card li {
     font-size: 1.4rem;
