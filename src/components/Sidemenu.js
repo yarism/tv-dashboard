@@ -14,16 +14,27 @@ const data = [
         ]
     },
     {
-        title: 'Nyheter',
+        title: 'Erbjudanden',
         items: [
-            '5/7 - Invigning!'
+            'Morgontennis (10 klipp) - 700 kr',
+            'Sommartennis (Obegränsat) - 1 495 kr',
+            'PT Klippet (10 klipp) - 5 000 kr',
+            'Sommarpadel (Obegränsat) - 1 495 kr'
         ]
     },
     {
-        title: 'Erbjudande',
+        image: './A_Logo_Slogan_01.png'
     },
     {
-        title: 'mjau',
+        title: 'Kurser',
+        items: [
+            'Juniorträning 7-18 år',
+            'Vuxenkurs',
+            'Sommarkurs JUNIOR vecka 27 2019',
+            'Sommarkurs JUNIOR vecka 29 2019',
+            'Sommarkurs VUXNA vecka 27 2019',
+            'Sommarkurs VUXNA vecka 29 2019'
+        ]
     }
 ];
 
@@ -79,11 +90,16 @@ class Sidemenu extends React.Component {
     renderCard() {
         return data.map((item, index) =>
                 <li key={item.title} className={"grid__card " + (index === this.state.activeIndex && this.state.showFullscreen ? 'grid__card--full ' : '') + (index !== this.state.activeIndex && this.state.showFullscreen ? 'grid__card--hide' : '') }>
-                    <h3>{item.title}</h3>
+                    {item.title &&
+                        <h3>{item.title}</h3>
+                    }
                     {item.items &&
                         <ul>
                             {this.renderListItem(item.items)}
                         </ul>
+                    }
+                    {item.image &&
+                        <img src={item.image} style={{width: '100%'}} />
                     }
                 </li>
         );
