@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas: 'main main main aside';
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .backdrop {
@@ -35,6 +36,8 @@
 .aside {
   display: grid;
   grid-area: aside;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  height: calc(100vh - 8rem);
   grid-row-gap: 2rem;
   padding: 4rem;
   padding-bottom: 2rem;
@@ -43,12 +46,14 @@
 @media (max-width: 1600px) {
   .aside {
     padding: 2rem;
+    height: calc(100vh - 4rem);
   }
 }
 
 .headline {
   font-size: 8rem;
-  display: inline;
+  margin: 0;
+  margin-bottom: 2rem;
 }
 
 .grid {
@@ -68,7 +73,6 @@
 .grid__card {
   background-color: #ffffff1a;
   border-radius: 2rem;
-  min-height: 16rem;
 }
 
 .grid__card--available {
@@ -79,6 +83,7 @@
   padding: 2rem 2.5rem;
   transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
+  overflow: hidden;
 }
 
 .aside .grid__card:first-child {
@@ -165,7 +170,7 @@
 }
 
 .clock__container h1 {
+  font-size: 5rem;
   padding: 0.5rem;
-  border-bottom: 0.3rem solid #c14b8b45;
   display: inline;
 }

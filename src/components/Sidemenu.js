@@ -35,7 +35,6 @@ const data = [
             'Sommarkurs JUNIOR vecka 27 2019',
             'Sommarkurs JUNIOR vecka 29 2019',
             'Sommarkurs VUXNA vecka 27 2019',
-            'Sommarkurs VUXNA vecka 29 2019'
         ],
         backgroundImage: './padel-2.jpg'
     }

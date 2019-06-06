@@ -10,7 +10,6 @@ function App() {
       <Clock />
       <main className="main">
         <h1 className="headline">Banor</h1>
-        <h2>Padel</h2>
         <ul className="grid">
           <Spot court={1} />
           <Spot court={2} />
