@@ -114,7 +114,7 @@
 
 @media (max-width: 1600px) {
   .aside .grid__card li {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -133,7 +133,7 @@
 }
 
 .player__container {
-  padding: 1rem 2.5rem;
+  padding: 2rem 2.5rem;
 }
 
 .player__first {
@@ -153,7 +153,7 @@
 
 .player__container span {
   padding: 0.5rem 1rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 .clock__container {
