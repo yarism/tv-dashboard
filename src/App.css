@@ -103,6 +103,10 @@
   border-radius: 0.5rem;
 }
 
+.aside .grid__card--image {
+  padding: 0;
+}
+
 .aside .grid__card--hide {
   opacity: 0;
 }

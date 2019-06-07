@@ -9,7 +9,7 @@ function App() {
     <div className="app">
       <Clock />
       <main className="main">
-        <h1 className="headline">Banor</h1>
+        <h1 className="headline">Välkommen!</h1>
         <ul className="grid">
           <Spot court={1} />
           <Spot court={2} />

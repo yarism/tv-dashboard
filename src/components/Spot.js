@@ -7,8 +7,7 @@ const spot = ({court, available}) => {
                 <div className="player__container">
                     {available &&
                         <React.Fragment>
-                            <div>Boka via MATCHi</div>
-                            <img alt="Boka med MATCHi" src="./A_Logo_Slogan_01.png" style={{width: '100%'}} />
+                            <img alt="Boka med MATCHi" src="./A_Logo_Slogan_01.png" style={{width: '100%', marginTop: '3rem'}} />
                         </React.Fragment>
                     }
                     {!available &&

@@ -25,7 +25,7 @@ const data = [
         backgroundImage: './padel-1.jpg'
     },
     {
-        image: './A_Logo_Slogan_01.png'
+        image: './asics.png'
     },
     {
         title: 'Kurser',
@@ -91,7 +91,7 @@ class Sidemenu extends React.Component {
     
     renderCard() {
         return data.map((item, index) =>
-                <li key={item.title} className={"grid__card " + (index === this.state.activeIndex && this.state.showFullscreen ? 'grid__card--full ' : '') + (index !== this.state.activeIndex && this.state.showFullscreen ? 'grid__card--hide' : '') }>
+                <li key={item.title} className={"grid__card " + (item.image ? 'grid__card--image ' : '') + (index === this.state.activeIndex && this.state.showFullscreen ? 'grid__card--full ' : '') + (index !== this.state.activeIndex && this.state.showFullscreen ? 'grid__card--hide' : '') }>
                     {item.title &&
                         <h3>{item.title}</h3>
                     }
