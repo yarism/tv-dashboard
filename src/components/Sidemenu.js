@@ -13,15 +13,15 @@ const data = [
         items2: [
             {
                 title: '18:00',
-                desc: <span>2/4 lediga - <b>XL Bygg</b></span>
+                desc: <span>2/4 lediga - <b>Bana 2</b></span>
             },
             {
                 title: '19:00',
-                desc: <span>2/4 lediga - <b>Skandigamäklarna</b></span>
+                desc: <span>2/4 lediga - <b>Bana 8</b></span>
             },
             {
                 title: '12/7',
-                desc: <span>1/4 lediga - <b>Gatorade</b></span>,
+                desc: <span>1/4 lediga - <b>Bana 9</b></span>,
                 borderTop: true
             }
         ],
