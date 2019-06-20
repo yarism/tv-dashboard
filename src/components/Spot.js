@@ -15,9 +15,9 @@ const spot = ({court = "Lediga banor", available, nextAvailable, joinable, simpl
                 <div className="player__container">
                     {available &&
                         <ul style={{ color: '#1c90dd', fontSize: '2.2rem', lineHeight: '4rem' }}>
-                            <li>Bana 5</li>
-                            <li>Teknikbyggarna</li>
-                            <li>Global Invest</li>
+                            <li>Bana 3</li>
+                            <li>Bana 6</li>
+                            <li>Bana 7</li>
                             <li>Bana 11</li>
                         </ul>
                     }
