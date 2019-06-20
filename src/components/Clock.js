@@ -24,7 +24,7 @@ export default class Clock extends React.Component {
 		return (
             <div className="clock__container">
                 <span className="clock" style={{  }}>{this.state.time}</span>
-				<div className="location"><MapPin size={18} /><span>Padel Zenter, Årsta</span></div>
+				<div className="location"><MapPin size={18} /><span>MATCHi, Göteborg</span></div>
             </div>
 		)
 	}
