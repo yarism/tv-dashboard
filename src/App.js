@@ -11,18 +11,14 @@ function App() {
       <main className="main">
         <h1 className="headline">Välkommen!</h1>
         <ul className="grid">
-          <Spot court={1} />
-          <Spot court={2} />
-          <Spot court={3} />
-          <Spot court={4} available={true} />
-          <Spot court={5} />
-          <Spot court={6} available={true} />
-          <Spot court={7} available={true} />
-          <Spot court={8} />
-          <Spot court={9} />
-          <Spot court={10} available={true} />
-          <Spot court={11} />
-          <Spot court={12} available={true} />
+          <Spot court={"Engströms bil"} />
+          <Spot court={"XL Bygg"} joinable={true} />
+          <Spot court={"Harrys"} />
+          <Spot court={"Morups fönster"} nextAvailable={true} />
+          <Spot court={"Skandiamäklarna"} joinable={true} />
+          <Spot court={"Gatorade"}  />
+          <Spot court={"BC Bygg"} />
+          <Spot available={true} />
         </ul>
       </main>
       <Sidemenu />

@@ -1,23 +1,25 @@
 .app {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-areas: 'main main main aside';
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 'main main main main aside';
   height: 100vh;
   overflow: hidden;
 }
 
 .backdrop {
   position: absolute;
+  width: 100%;
+  left: -100%;
   top: 0;
-  left: 0;
   bottom: 0;
-  right: 0;
-  background-image: linear-gradient(to bottom right, #EB5C7C, #C14B8C);
-  transition: all .2s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
+  opacity: 0.3;
+  /*background-image: linear-gradient(to bottom right, #EB5C7C, #C14B8C);*/
+  background-image: linear-gradient(to bottom, #6bc945, #41b99c);
+  transition: all 0.8s cubic-bezier(0.13, 0.95, 0.85, 0.99);
 }
 
 .backdrop--show {
+  left: 0;
   opacity: 1;
 }
 
@@ -39,7 +41,7 @@
   grid-template-rows: 1fr 1fr 1fr 1fr;
   height: calc(100vh - 8rem);
   grid-row-gap: 2rem;
-  padding: 4rem;
+  padding: 4rem 0 4rem 4rem;
   padding-bottom: 2rem;
 }
 
@@ -48,6 +50,45 @@
     padding: 2rem;
     height: calc(100vh - 4rem);
   }
+}
+
+.aside__card__headline {
+  padding: 2rem 3rem;
+  border-radius: 4rem 0 0 4rem;
+  background: linear-gradient(to left, #ffffff5c 50%, #ffffff1a 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 10s ease;
+}
+
+.aside__card__headline--animate {
+  background-position: right bottom;
+  animation: animateHeadline 9.5s ease-out;
+}
+
+@keyframes animateHeadline {
+  0% {
+    background-position: left bottom;
+  }
+  50% {
+    background-position: left bottom;
+  }
+  100% {
+    background-position: right bottom;
+  }
+}
+
+.card__list {
+  margin-left: 1rem;
+}
+
+.card__list__item {
+  font-size: 1.6rem;
+  padding: 1.5rem 0;
+}
+
+.card__list__item--border {
+  border-top: 1px solid white;
 }
 
 .headline {
@@ -59,14 +100,14 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 4rem;
-  grid-row-gap: 5rem;
+  grid-column-gap: 3rem;
+  grid-row-gap: 3rem;
 }
 
 @media (max-width: 1600px) {
   .grid {
     grid-column-gap: 2rem;
-    grid-row-gap: 3rem;
+    grid-row-gap: 1rem;
   }
 }
 
@@ -76,13 +117,11 @@
 }
 
 .grid__card--available {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .aside .grid__card {
-  padding: 2rem 2.5rem;
   transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 100;
   overflow: hidden;
 }
 
@@ -101,10 +140,6 @@
 .grid__card--full {
   transform: scale(3.5, 3.5);
   border-radius: 0.5rem;
-}
-
-.aside .grid__card--image {
-  padding: 0;
 }
 
 .aside .grid__card--hide {
@@ -128,12 +163,12 @@
 }
 
 .card__headline {
-  background-color: white;
+  background-color: #318c769c;
   margin: 0;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   padding: 2rem 2.5rem;
-  color: #d45384;
+  text-align: center;
 }
 
 .grid__card--available .card__headline {
@@ -142,7 +177,12 @@
 }
 
 .player__container {
-  padding: 2rem 2.5rem;
+  padding: 1.5rem 2.5rem;
+}
+
+.player__container h4 {
+  font-size: 2rem;
+  margin: 1rem 0;
 }
 
 .player__first {
@@ -160,11 +200,6 @@
   border-top: 1px solid #f4cddb;
 }
 
-.player__container span {
-  padding: 0.5rem 1rem;
-  font-size: 2rem;
-}
-
 .clock__container {
   position: absolute;
   top: 1rem;
@@ -173,8 +208,173 @@
   text-align: center;
 }
 
-.clock__container h1 {
+.clock {
   font-size: 5rem;
+  font-weight: bold;
   padding: 0.5rem;
-  display: inline;
+  display: block;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location span {
+  margin-left: 0.5rem;
+  font-weight: bold;
+}
+
+.slot--first {
+  border-bottom: 1px solid #ffffff4a;
+  padding-bottom: 10px;
+}
+
+.profile__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 1rem;
+}
+
+.profile {
+  display: inline-block;
+}
+
+.profile:last-child {
+  margin-right: 0;
+}
+
+.profile__image__container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile__container--joinable .profile__image__container:not(.profile__image__container--joinable)::after {
+  content: attr(rank);
+  background-color: black;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 2.5rem;
+  border-radius: 2rem;
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  right: 0;
+}
+
+.profile__image__container--joinable::after {
+  content: attr(joinable);
+  width: 100%;
+  height: 100%;
+  line-height: 5.6rem;
+  position: absolute;
+  text-align: center;
+  font-size: 4rem;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.profile__image {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 3rem;
+  border: 5px solid white;
+}
+
+@media (max-width: 1600px) {
+  .profile__image {
+    width: 4.6rem;
+    height: 4.6rem;
+  }
+}
+
+.profile__image__container--joinable .profile__image {
+  border-radius: 3rem 3rem 3rem 0;
+}
+
+.modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0%;
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.modal--show {
+  bottom: 5%;
+  opacity: 1;
+  animation: animateModalContent 1.3s ease-out;
+}
+
+.modal__content {
+  width: 130rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal__content h1 {
+  font-size: 5rem;
+}
+
+@keyframes animateModalContent {
+  0% {
+    bottom: 0%;
+    opacity: 0;
+  }
+  60% {
+    bottom: 3%;
+    opacity: 0;
+  }
+  100% {
+    bottom: 5%;
+    opacity: 1;
+  }
+}
+
+.joinable__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 4rem;
+  grid-column-gap: 4rem;
+}
+
+.joinable__container .player__container {
+  padding: 3rem 2.5rem;
+}
+
+.joinable__container .profile__container {
+  grid-column-gap: 2rem;
+}
+
+.joinable__container .profile {
+  margin: 0;
+}
+
+.joinable__container .profile__image {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 10rem;
+}
+
+.joinable__container .profile__image__container--joinable .profile__image {
+  border-radius: 8rem 8rem 8rem 0;
+}
+
+.joinable__container .profile__image__container--joinable::after {
+  font-size: 8rem;
+  line-height: 11rem;
+}
+
+.joinable__container .profile__container--joinable .profile__image__container:not(.profile__image__container--joinable)::after {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.4rem;
+  line-height: 4rem;
 }

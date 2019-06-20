@@ -1,43 +1,69 @@
 import React from 'react';
 
+import Modal from './Modal';
+import JoinableSlots from './JoinableSlots';
+import Activities from './Activities';
+import You from './You';
+
 const FullscreenContext = React.createContext();
 
 const data = [
     {
+        title: 'Speltillfällen',
+        items2: [
+            {
+                title: '18:00',
+                desc: <span>2/4 lediga - <b>XL Bygg</b></span>
+            },
+            {
+                title: '19:00',
+                desc: <span>2/4 lediga - <b>Skandigamäklarna</b></span>
+            },
+            {
+                title: '12/7',
+                desc: <span>1/4 lediga - <b>Gatorade</b></span>,
+                borderTop: true
+            }
+        ],
+        component: <JoinableSlots />
+    },
+    {
         title: 'Aktiviteter',
-        items: [
-            '29/6 - Lär dig tennis',
-            '2/7 - Hur yoga förbättrar din smash',
-            '4/7 - Gruppträning med Leffe',
-            '12/7 - Minitunering i padel',
-            '14/7 - Gruppstretch'
+        items2: [
+            {
+                title: '29/6',
+                desc: <span>Gruppträning med Leffe</span>
+            },
+            {
+                title: '6/7',
+                desc: <span>Sommarkurs JUNIOR</span>
+            },
+            {
+                title: '12/7',
+                desc: <span>Minitunering i padel</span>
+            }
         ],
-        backgroundImage: './padel-1.jpg'
+        component: <Activities />
     },
     {
-        title: 'Erbjudanden',
-        items: [
-            'Morgontennis (10 klipp) - 700 kr',
-            'Sommartennis (Obegränsat) - 1 495 kr',
-            'PT Klippet (10 klipp) - 5 000 kr',
-            'Sommarpadel (Obegränsat) - 1 495 kr'
+        title: 'För dig',
+        items2: [
+            {
+                desc: <span><b>Morgontennis</b> (10 klipp) - <b>700 kr</b></span>
+            },
+            {
+                desc: <span><b>PT Klippet</b> (10 klipp) - <b>4 995 kr</b></span>
+            },
+            {
+                desc: <span><b>Sommarklippet</b> (10 klipp) - <b>4 995 kr</b></span>
+            }
         ],
-        backgroundImage: './padel-1.jpg'
+        component: <You />
     },
     {
-        image: './asics.png'
+        image: './shoe_ad3.png',
+        notInSlideshow: true
     },
-    {
-        title: 'Kurser',
-        items: [
-            'Juniorträning 7-18 år',
-            'Vuxenkurs',
-            'Sommarkurs JUNIOR vecka 27 2019',
-            'Sommarkurs JUNIOR vecka 29 2019',
-            'Sommarkurs VUXNA vecka 27 2019',
-        ],
-        backgroundImage: './padel-2.jpg'
-    }
 ];
 
 class Sidemenu extends React.Component {
@@ -51,7 +77,8 @@ class Sidemenu extends React.Component {
     }
 
     componentDidMount() {
-		setInterval(this.update.bind(this), 10000)
+        setInterval(this.update.bind(this), 10000)
+        //this.showNextCard();
 	}
 	
 	update() {
@@ -89,43 +116,54 @@ class Sidemenu extends React.Component {
         return listItems.map(item => <li key={item}>{item}</li>);
     }
     
+    renderListItem2(listItems) {
+        return listItems.map(item =><li className={'card__list__item ' + (item.borderTop ? 'card__list__item--border ' : '')} key={item.desc}><b style={{ marginRight: '2rem'}}>{item.title && item.title}</b>{item.desc}</li>)
+    }
+    
     renderCard() {
         return data.map((item, index) =>
-                <li key={item.title} className={"grid__card " + (item.image ? 'grid__card--image ' : '') + (index === this.state.activeIndex && this.state.showFullscreen ? 'grid__card--full ' : '') + (index !== this.state.activeIndex && this.state.showFullscreen ? 'grid__card--hide' : '') }>
+            <React.Fragment>
+                <li key={item.title} className={"card"}>
                     {item.title &&
-                        <h3>{item.title}</h3>
+                        <h3 className={"aside__card__headline " + (index - 1 === this.state.activeIndex && !this.state.showFullscreen ? "aside__card__headline--animate" : "")}>{item.title}</h3>
                     }
                     {item.items &&
                         <ul>
                             {this.renderListItem(item.items)}
                         </ul>
                     }
+                    {item.items2 && 
+                        <ul className="card__list">
+                            {this.renderListItem2(item.items2)}
+                        </ul>
+                    }
                     {item.image &&
                         <img src={item.image} style={{width: '100%'}} />
                     }
                 </li>
+                <Modal show={index === this.state.activeIndex && this.state.showFullscreen}>{item.component}</Modal>
+            </React.Fragment>
         );
     }
 	
 	render() {
 		return (
             <FullscreenContext.Provider value={{ showFullscreen: this.state.showFullscreen, card: data[this.state.activeIndex] }}>
-                <ul className="aside" style={{ backgroundImage: './A_Logo_Slogan_01.png' }}>
+                <ul className="aside">
                     {this.renderCard()}
                 </ul>
-                {Backdrop()}
+                {Backdrop(data[this.state.activeIndex])}
             </FullscreenContext.Provider>
 		)
 	}
 }
 
-const Backdrop = () => {
+const Backdrop = (item) => {
     return (
         <FullscreenContext.Consumer>
             {context => {
-                console.log(context);
                 return (
-                    <div className={"backdrop " + (context.showFullscreen ? 'backdrop--show' : '')} style={{ backgroundImage: (context.card && context.card.backgroundImage ? `url(${context.card.backgroundImage })` : '') }}></div>
+                    <div className={"backdrop " + (context.showFullscreen && !item.notInSlideshow ? 'backdrop--show' : '')} style={{ backgroundImage: (context.card && context.card.backgroundImage ? `url(${context.card.backgroundImage })` : '') }}></div>
                 )
             }}
         </FullscreenContext.Consumer>
