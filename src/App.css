@@ -14,7 +14,7 @@
   bottom: 0;
   opacity: 0.3;
   /*background-image: linear-gradient(to bottom right, #EB5C7C, #C14B8C);*/
-  background-image: linear-gradient(to bottom, #6bc945, #41b99c);
+  background-image: linear-gradient(to bottom, #90CC21, #628c15);
   transition: all 0.8s cubic-bezier(0.13, 0.95, 0.85, 0.99);
 }
 
@@ -163,12 +163,13 @@
 }
 
 .card__headline {
-  background-color: #318c769c;
+  background-color: #90CC21;
   margin: 0;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   padding: 2rem 2.5rem;
   text-align: center;
+  color: #151515;
 }
 
 .grid__card--available .card__headline {
